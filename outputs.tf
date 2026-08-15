@@ -8,7 +8,7 @@ output "batch_compute_environments_arn" {
 }
 output "batch_compute_environments_compute_resources" {
   description = "Map of compute_resources values across all batch_compute_environments, keyed the same as var.batch_compute_environments"
-  value       = { for k, v in aws_batch_compute_environment.batch_compute_environments : k => v.compute_resources if v.compute_resources != null && length(v.compute_resources) > 0 }
+  value       = { for k, v in aws_batch_compute_environment.batch_compute_environments : k => one(v.compute_resources) if v.compute_resources != null && length(v.compute_resources) > 0 }
 }
 output "batch_compute_environments_ecs_cluster_arn" {
   description = "Map of ecs_cluster_arn values across all batch_compute_environments, keyed the same as var.batch_compute_environments"
@@ -16,7 +16,7 @@ output "batch_compute_environments_ecs_cluster_arn" {
 }
 output "batch_compute_environments_eks_configuration" {
   description = "Map of eks_configuration values across all batch_compute_environments, keyed the same as var.batch_compute_environments"
-  value       = { for k, v in aws_batch_compute_environment.batch_compute_environments : k => v.eks_configuration if v.eks_configuration != null && length(v.eks_configuration) > 0 }
+  value       = { for k, v in aws_batch_compute_environment.batch_compute_environments : k => one(v.eks_configuration) if v.eks_configuration != null && length(v.eks_configuration) > 0 }
 }
 output "batch_compute_environments_name" {
   description = "Map of name values across all batch_compute_environments, keyed the same as var.batch_compute_environments"
@@ -60,6 +60,6 @@ output "batch_compute_environments_type" {
 }
 output "batch_compute_environments_update_policy" {
   description = "Map of update_policy values across all batch_compute_environments, keyed the same as var.batch_compute_environments"
-  value       = { for k, v in aws_batch_compute_environment.batch_compute_environments : k => v.update_policy if v.update_policy != null && length(v.update_policy) > 0 }
+  value       = { for k, v in aws_batch_compute_environment.batch_compute_environments : k => one(v.update_policy) if v.update_policy != null && length(v.update_policy) > 0 }
 }
 
